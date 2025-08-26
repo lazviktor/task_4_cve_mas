@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-refresh GigaChat API token
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/mas_template/task_4/llm_agent/gigachat-token.sh
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
