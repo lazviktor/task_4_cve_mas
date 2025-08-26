@@ -1,0 +1,15 @@
+[Unit]
+Description=Task 4 Vulnerability Agent
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/mas_template/task_4/agent
+Environment=AGENT_CONFIG=/opt/mas_template/task_4/agent/config.yaml
+ExecStart=/usr/bin/python3 /opt/mas_template/task_4/agent/agent.py --loop
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -13,10 +13,17 @@ SSH: admin / qwerty123
    python3 deploy/register_agent.py --manager http://10.62.28.10:8000 --config agent/config.yaml
 
 3. Запустить агента (разово):
-   cd agent && python3 agent.py
+   cd agent
+   python3 -m pip install --upgrade pip
+   python3 -m pip install -r requirements.txt
+   sudo python3 agent.py
 
 4. Запустить LLM-агента:
-   cd llm_agent && python3 analyzer.py --manager http://10.62.28.10:8000 --output analysis.txt
+   cd llm_agent
+   python3 -m pip install --upgrade pip
+   python3 -m pip install -r requirements.txt
+   export GIGACHAT_API_KEY="ВАШ_ТОКЕН"
+   python3 analyzer.py --manager http://10.62.28.10:8000 --output analysis.txt
 
 ## Работа с токеном GigaChat
 ⚠️ Токен действует 30 минут.

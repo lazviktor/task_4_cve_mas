@@ -14,5 +14,5 @@ while true; do
     echo "[ERROR] Ошибка получения токена: $RESPONSE"
   fi
 
-  sleep 1500
+  sleep 1500  # 25 минут
 done

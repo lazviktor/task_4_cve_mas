@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Task 4 — Vulnerabilities Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Task 4 — Vulnerabilities Dashboard</h1>
+  <p>Total findings in last 50 reports: <b>{{ totals.count }}</b></p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Hostname</th><th>Created</th><th>Total</th><th>OS</th><th>PyPI</th><th>JSON+LLM</th><th>LLM?</th></tr>
+    </thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.hostname }}</td>
+        <td>{{ r.created_at }}</td>
+        <td>{{ r.count }}</td>
+        <td>{{ r.os_count }}</td>
+        <td>{{ r.pip_count }}</td>
+        <td><a href="/api/v1/reports/{{ r.id }}" target="_blank">open</a></td>
+        <td>{{ "✅" if r.has_analysis else "—" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
