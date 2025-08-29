@@ -24,7 +24,7 @@ echo "export GIGACHAT_TOKEN=\"$TOKEN\"" > ~/.gigachat.env
 source ~/.gigachat.env
 echo "[OK] Токен сохранён и подключён"
 
-cd ~/Desktop/task_4_cve_mas
+cd ~/task_4_cve_mas
 
 echo "[INFO] Запускаем Agent..."
 python3 agent/agent.py --loop &
