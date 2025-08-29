@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MAS Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>🛡 MAS Dashboard</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Hostname</th>
+        <th>Vulnerabilities</th>
+        <th>LLM?</th>
+        <th>Analysis</th>
+      </tr>
+    </thead>
+    <tbody id="reports"></tbody>
+  </table>
+
+<script>
+async function loadReports() {
+  let res = await fetch('/api/v1/reports');
+  let data = await res.json();
+  // сортировка: новые сверху
+  data.sort((a, b) => b.id - a.id);
+
+  let tbody = document.getElementById('reports');
+  tbody.innerHTML = "";
+  data.forEach(r => {
+    let row = `<tr>
+      <td>${r.id}</td>
+      <td>${r.hostname}</td>
+      <td>${r.vulnerabilities}</td>
+      <td>${r.analysis ? "✅" : "❌"}</td>
+      <td>${r.analysis || ""}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+}
+setInterval(loadReports, 5000);
+loadReports();
+</script>
+</body>
+</html>

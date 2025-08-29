@@ -1,9 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e
-cd "$(dirname "$0")"
-python3 -m venv .venv
-. .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-export DATABASE_URL="sqlite:///./data.db"
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+# Запускаем Uvicorn из корня проекта, чтобы работали относительные импорты
+cd "$(dirname "$0")/.."
+
+exec uvicorn manager.app:app --host 0.0.0.0 --port 8000 --reload
+

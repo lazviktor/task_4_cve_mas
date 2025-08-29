@@ -1,0 +1,5 @@
+/Users/victorlazarenko/Desktop/task_4_cve_mas/agent/agent.py:153: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "found_at": datetime.utcnow().isoformat() + "Z",
+Post failed: 404 Client Error: Not Found for url: http://127.0.0.1:8000/api/v1/findings
+[MacBook-Pro-victor.local] vulnerabilities found: 0
+Saved local report to: /Users/victorlazarenko/Desktop/task_4_cve_mas/agent/cve_report.json
